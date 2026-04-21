@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -80,6 +81,16 @@ export default function Home() {
     },
   };
 
+  const handleScrollToCollections = () => {
+    const headerOffset = 84;
+    const hero = heroScrollRef.current;
+    if (!hero) return;
+
+    const heroTop = hero.getBoundingClientRect().top + window.scrollY;
+    const nextTop = heroTop + window.innerHeight - headerOffset;
+    window.scrollTo({ top: nextTop, behavior: "smooth" });
+  };
+
   return (
     <main className="bg-black text-white">
       <Navbar />
@@ -133,16 +144,17 @@ export default function Home() {
                 Where timeless beauty meets ethical craftsmanship. Every piece
                 tells a story of rare earth treasures.
               </motion.p>
-              <motion.a
+              <motion.button
                 variants={heroItemVariants}
-                href="#collections"
+                type="button"
+                onClick={handleScrollToCollections}
                 className="group mt-8 inline-block bg-transparent text-[11px] font-semibold uppercase tracking-[0.24em] text-amber-200/95 transition-all duration-300 hover:tracking-[0.26em] hover:text-amber-100"
               >
                 <span className="relative inline-block">
                   Explore Collection
                   <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-amber-200/90 transition-transform duration-300 group-hover:scale-x-100" />
                 </span>
-              </motion.a>
+              </motion.button>
             </motion.div>
           </motion.div>
         </div>
@@ -154,6 +166,7 @@ export default function Home() {
         >
           <div className="mx-auto max-w-7xl space-y-12">
             <motion.div
+              id="featured-collections"
               variants={sectionReveal}
               initial="hidden"
               whileInView="visible"
@@ -226,15 +239,15 @@ export default function Home() {
                   and deliver certified pieces that align with your design and
                   investment requirements.
                 </p>
-                <a
-                  href="#contact"
+                <Link
+                  href="/contact"
                   className="group mt-7 inline-block bg-transparent text-[11px] font-semibold uppercase tracking-[0.24em] text-amber-700 transition-all duration-300 hover:tracking-[0.26em] hover:text-amber-800"
                 >
                   <span className="relative inline-block">
                     Contact Now
                     <span className="absolute -bottom-1 left-0 h-px w-full bg-amber-700/90 transition-all duration-300 group-hover:bg-amber-800 group-hover:shadow-[0_0_10px_rgba(180,83,9,0.35)]" />
                   </span>
-                </a>
+                </Link>
               </div>
               <motion.div
                 variants={imageReveal}

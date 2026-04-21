@@ -246,7 +246,7 @@ export default function AboutPage() {
               ))}
             </motion.ul>
             <Link
-              href="/#contact"
+              href="/contact"
               className="group mt-7 inline-block bg-transparent text-[11px] font-semibold uppercase tracking-[0.24em] text-amber-700 transition-all duration-300 hover:tracking-[0.26em] hover:text-amber-800"
             >
               <span className="relative inline-block">

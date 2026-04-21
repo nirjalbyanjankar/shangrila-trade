@@ -13,10 +13,12 @@ const navItems = [
 
 export default function Navbar() {
   const [isLightMode, setIsLightMode] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsLightMode(window.scrollY > 8);
+      const nextIsLightMode = window.scrollY > 8;
+      setIsLightMode((prev) => (prev === nextIsLightMode ? prev : nextIsLightMode));
     };
 
     handleScroll();
@@ -29,7 +31,7 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         isLightMode
           ? "bg-white/92 shadow-md shadow-black/10 backdrop-blur-md"
           : "bg-transparent"
@@ -83,7 +85,60 @@ export default function Navbar() {
             ))}
           </ul>
         </nav>
+
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          className={`inline-flex h-10 w-10 items-center justify-center rounded-md border transition-colors md:hidden ${
+            isLightMode
+              ? "border-slate-300 text-slate-800 hover:bg-slate-100"
+              : "border-slate-300/50 text-slate-100 hover:bg-white/10"
+          }`}
+        >
+          <span className="sr-only">Open navigation menu</span>
+          <span className="relative block h-4 w-5">
+            <span
+              className={`absolute left-0 top-0 h-0.5 w-5 bg-current transition-transform duration-300 ${
+                isMobileMenuOpen ? "translate-y-[7px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-[7px] h-0.5 w-5 bg-current transition-opacity duration-200 ${
+                isMobileMenuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-[14px] h-0.5 w-5 bg-current transition-transform duration-300 ${
+                isMobileMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+              }`}
+            />
+          </span>
+        </button>
       </div>
+
+      {isMobileMenuOpen ? (
+        <nav className="border-t border-slate-300/25 px-6 pb-4 pt-3 md:hidden">
+          <ul className="space-y-1">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                <Link
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block rounded-md px-3 py-2 text-[11px] uppercase tracking-[0.18em] transition-colors ${
+                    isLightMode
+                      ? "text-slate-800 hover:bg-slate-100"
+                      : "text-slate-100/90 hover:bg-white/10"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ) : null}
     </motion.header>
   );
 }
