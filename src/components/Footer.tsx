@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {
@@ -31,22 +32,25 @@ export default function Footer() {
         <nav aria-label="Footer navigation" className="md:justify-self-center">
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] text-slate-300">
             <li>
-              <a href="#" className="transition-colors hover:text-amber-300">
+              <Link href="/" className="transition-colors hover:text-amber-300">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#about" className="transition-colors hover:text-amber-300">
+              <Link
+                href="/about"
+                className="transition-colors hover:text-amber-300"
+              >
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="transition-colors hover:text-amber-300"
               >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -54,13 +58,33 @@ export default function Footer() {
         <div className="space-y-2 text-[10px] tracking-[0.18em] text-slate-300 md:justify-self-end">
           <p className="text-amber-300/90">Contact Information</p>
           <p className="normal-case tracking-normal text-slate-400">
-            +971 50 123 4567
+            Nepal:{" "}
+            <a
+              href="tel:+9779803955047"
+              className="relative inline-block transition-colors hover:text-amber-300 after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-amber-300 after:transition-transform after:duration-300 hover:after:scale-x-100"
+            >
+              +977 9803955047
+            </a>
           </p>
           <p className="normal-case tracking-normal text-slate-400">
-            Office 2408, Gold & Diamond Park, Dubai, UAE
+            Thailand:{" "}
+            <a
+              href="tel:+66834461166"
+              className="relative inline-block transition-colors hover:text-amber-300 after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-amber-300 after:transition-transform after:duration-300 hover:after:scale-x-100"
+            >
+              +66 834461166
+            </a>
           </p>
           <p className="normal-case tracking-normal text-slate-400">
-            info@shangrilatrade.com
+            Jhochhen, Kathmandu
+          </p>
+          <p className="normal-case tracking-normal text-slate-400">
+            <a
+              href="mailto:bagnbags70@gmail.com"
+              className="relative inline-block transition-colors hover:text-amber-300 after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-amber-300 after:transition-transform after:duration-300 hover:after:scale-x-100"
+            >
+              bagnbags70@gmail.com
+            </a>
           </p>
         </div>
       </div>

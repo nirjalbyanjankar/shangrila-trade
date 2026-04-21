@@ -62,6 +62,23 @@ export default function Home() {
       transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const },
     },
   };
+  const staggerContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.05,
+      },
+    },
+  };
+  const itemReveal = {
+    hidden: { opacity: 0, y: 14 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+    },
+  };
 
   return (
     <main className="bg-black text-white">
@@ -302,66 +319,102 @@ export default function Home() {
 
           <motion.div
             className="mt-12 grid auto-rows-[220px] gap-4 md:hidden"
-            variants={sectionReveal}
+            variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <div className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md">
+            <motion.div
+              variants={itemReveal}
+              className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md"
+            >
               <Image src="/img4.jpg" alt="Gallery image one" fill className="object-cover" />
-            </div>
-            <div className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md">
+            </motion.div>
+            <motion.div
+              variants={itemReveal}
+              className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md"
+            >
               <Image src="/img7.jpg" alt="Gallery image two" fill className="object-cover" />
-            </div>
-            <div className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md">
+            </motion.div>
+            <motion.div
+              variants={itemReveal}
+              className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md"
+            >
               <Image src="/img8.jpg" alt="Gallery image three" fill className="object-cover" />
-            </div>
-            <div className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md">
+            </motion.div>
+            <motion.div
+              variants={itemReveal}
+              className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md"
+            >
               <Image src="/img6.jpg" alt="Gallery image four" fill className="object-cover" />
-            </div>
-            <div className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md">
+            </motion.div>
+            <motion.div
+              variants={itemReveal}
+              className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md"
+            >
               <Image src="/img9.jpg" alt="Gallery image five" fill className="object-cover" />
-            </div>
-            <div className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md">
+            </motion.div>
+            <motion.div
+              variants={itemReveal}
+              className="relative overflow-hidden rounded-xl border-2 border-white bg-white shadow-md"
+            >
               <Image
                 src="/img11.jpg"
                 alt="Gallery image six"
                 fill
                 className="object-cover"
               />
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
             className="relative mx-auto mt-14 hidden h-[720px] w-[1080px] md:block"
-            variants={sectionReveal}
+            variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <div className="absolute left-0 top-12 h-[220px] w-[350px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg">
+            <motion.div
+              variants={itemReveal}
+              className="absolute left-0 top-12 h-[220px] w-[350px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg"
+            >
               <Image src="/img4.jpg" alt="Collage image one" fill className="object-cover" />
-            </div>
-            <div className="absolute left-[290px] top-0 h-[210px] w-[320px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg">
+            </motion.div>
+            <motion.div
+              variants={itemReveal}
+              className="absolute left-[290px] top-0 h-[210px] w-[320px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg"
+            >
               <Image src="/img7.jpg" alt="Collage image two" fill className="object-cover" />
-            </div>
-            <div className="absolute left-[600px] top-[90px] h-[250px] w-[390px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg">
+            </motion.div>
+            <motion.div
+              variants={itemReveal}
+              className="absolute left-[600px] top-[90px] h-[250px] w-[390px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg"
+            >
               <Image src="/img6.jpg" alt="Collage image three" fill className="object-cover" />
-            </div>
-            <div className="absolute left-[150px] top-[260px] h-[280px] w-[460px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg">
+            </motion.div>
+            <motion.div
+              variants={itemReveal}
+              className="absolute left-[150px] top-[260px] h-[280px] w-[460px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg"
+            >
               <Image src="/img8.jpg" alt="Collage image four" fill className="object-cover" />
-            </div>
-            <div className="absolute left-[650px] top-[330px] h-[240px] w-[320px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg">
+            </motion.div>
+            <motion.div
+              variants={itemReveal}
+              className="absolute left-[650px] top-[330px] h-[240px] w-[320px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg"
+            >
               <Image src="/img9.jpg" alt="Collage image five" fill className="object-cover" />
-            </div>
-            <div className="absolute left-[410px] top-[530px] h-[190px] w-[250px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg">
+            </motion.div>
+            <motion.div
+              variants={itemReveal}
+              className="absolute left-[410px] top-[530px] h-[190px] w-[250px] overflow-hidden rounded-md border-4 border-white bg-white shadow-lg"
+            >
               <Image
                 src="/img11.jpg"
                 alt="Collage image six"
                 fill
                 className="object-cover"
               />
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
